@@ -1,22 +1,20 @@
 <section class="todoapp">
       <header class="header">
         <h1><%= @list.name %> </h1>
-        <input class="new-todo" placeholder="Add item..." autofocus="">
+        <%= form_for([@list, @item]) do |f| %>
+        <%= f.text_field :description, class: "new-todo", placeholder:@item.errors.full_messages_for(:description).first || "Enter a new Name" %>
+        <% end %>
       </header>
 
       <section class="main">
         <ul class="todo-list">
-          <li>
-            <div class="view">
-            <label>The Godfather</label>
-          </div>
-        </li>
-
-        <li>
-          <div class="view">
-          <label>Boondock Saints</label>
-        </div>
-      </li>
+          <% @list.items.each do |item| %>
+            <li>
+              <div class="view">
+              <label><%= item.description %></label>
+            </div>
+          </li>
+          <% end %>
         </ul>
       </section>
 
