@@ -1,26 +1,26 @@
 <section class="todoapp">
-      <header class="header">
-        <h1>JS Todo List</h1>
-        <%= form_for(@list) do |f| %>
-        <%= f.text_field :name, class: "new-todo", placeholder:@list.errors.full_messages_for(:name).first || "Enter a new Name" %>
-        <% end %>
-      </header>
+  <header class="header">
+    <h1>Your Lists</h1>
+    <%= form_for(@list) do |f| %>
+      <%= f.text_field :name, :class => "new-todo" %>
+      <%= f.submit :style => "display: none" %>
+    <% end %>
 
-      <section class="main">
-        <ul class="todo-list">
-          <% @lists.each do |list| %>
-          <li>
-            <div class="view">
-            <label><%= link_to list.name, list_path(list) %> </label>
-          </div>
-        </li>
-        <% end %>
-
-        </ul>
-      </section>
-
-      <footer class="footer" style="display: none;">
-        <button class="clear-completed"></button>
-      </footer>
-
-    </section>
+</form>
+  </header>
+  <section class="main">
+    <input class="toggle-all" type="checkbox">
+    <label for="toggle-all">Mark all as complete</label>
+    <ul class="todo-list">
+      <% @lists.each do |list| %>
+      <li>
+        <div class="view">
+          <label><%= link_to list.name, list_path(list) %></label>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </section>
+  <footer class="footer">
+  </footer>
+</section>

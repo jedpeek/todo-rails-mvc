@@ -1,4 +1,2 @@
-class List < ApplicationRecord
-  validates :name, presence: true
-  has_many :items
+class List < ActiveRecord::Base
 end
